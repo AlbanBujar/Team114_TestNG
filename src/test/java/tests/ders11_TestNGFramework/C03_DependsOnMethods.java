@@ -1,4 +1,4 @@
-package ders11_TestNGFramework;
+package tests.ders11_TestNGFramework;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;

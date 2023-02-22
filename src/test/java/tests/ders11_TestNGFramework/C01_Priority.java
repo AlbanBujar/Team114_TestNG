@@ -1,4 +1,4 @@
-package ders11_TestNGFramework;
+package tests.ders11_TestNGFramework;
 
 import org.testng.annotations.Test;
 
