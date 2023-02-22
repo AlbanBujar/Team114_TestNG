@@ -8,47 +8,52 @@ import utilities.Driver;
 
 public class C04_NegatifLoginTesti {
     @Test
-    public void test01() throws InterruptedException {
-
+    public void negatifLoginTesti(){
+        // Bir test methodu olusturun
+        // qualitydemy anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("qdUrl"));
-
-        QualitydemyPage qualitydemyPage = new QualitydemyPage();
+        // cookies'i kabul edin
+        QualitydemyPage qualitydemyPage= new QualitydemyPage();
         qualitydemyPage.cookiesKabulButonu.click();
-        Thread.sleep(2000);
-
+        // Login linkine tiklayin
         qualitydemyPage.ilkLoginLinki.click();
-        Thread.sleep(2000);
+        // gecerli kullanici adi ve gecersiz password yazip
         qualitydemyPage.emailKutusu.sendKeys(ConfigReader.getProperty("qdGecerliUsername"));
         qualitydemyPage.passwordKutusu.sendKeys(ConfigReader.getProperty("qdGecersizPassword"));
-        Thread.sleep(2000);
+        // login butonuna bastiginizda
         qualitydemyPage.loginButonu.click();
-        Thread.sleep(5000);
-
-       String hata = qualitydemyPage.hataliGirisYazisi.getText();
-        System.out.println(hata);
-
-
+        // basarili olarak giris yapilamadigini test edin
         Assert.assertTrue(qualitydemyPage.emailKutusu.isEnabled());
-
+        // ve sayfayi kapatin
+        Driver.closeDriver();
     }
 
     @Test
-    public void test02() throws InterruptedException {
+    public void negatifLoginTesti2(){
+        // Bir test methodu olusturun
+        // qualitydemy anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("qdUrl"));
-        QualitydemyPage qualitydemyPage =new QualitydemyPage();
 
-       qualitydemyPage.cookiesKabulButonu.click();
-        Thread.sleep(2000);
+        // cookies'i kabul edin
+        QualitydemyPage qualitydemyPage = new QualitydemyPage();
+        qualitydemyPage.cookiesKabulButonu.click();
 
+        // Login linkine tiklayin
         qualitydemyPage.ilkLoginLinki.click();
+
+        // gecersiz kullanici adi ve gecersiz password yazip
         qualitydemyPage.emailKutusu.sendKeys(ConfigReader.getProperty("qdGecersizUsername"));
-        Thread.sleep(1000);
         qualitydemyPage.passwordKutusu.sendKeys(ConfigReader.getProperty("qdGecersizPassword"));
+
+        // login butonuna bastiginizda
         qualitydemyPage.loginButonu.click();
-        Thread.sleep(2000);
+
+        // basarili olarak giris yapilamadigini test edin
         Assert.assertTrue(qualitydemyPage.emailKutusu.isEnabled());
 
+        // ve sayfayi kapatin
         Driver.closeDriver();
 
     }
+
 }
